@@ -17,7 +17,7 @@ const App = () => {
   const searchMovies = async (title: string) => {
     const response = await fetch(`${API_URL}&s=${title}`);
     const data = await response.json();
-
+    console.log(data);
     setMovies(data.Search);
   };
 
@@ -40,8 +40,8 @@ const App = () => {
 
       {movies?.length > 0 ? (
         <div className="container">
-          {movies.map((movie) => (
-            <MovieCard movie={movie} />
+          {movies.map((movie, index) => (
+            <MovieCard key={index} movie={movie} />
           ))}
         </div>
       ) : (
